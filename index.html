@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator — Minimalist Health Tool</title>
+    <meta name="description" content="A clean, simple, and elegant Body Mass Index (BMI) calculator.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">BMI Calculator</h1>
+            <div class="unit-toggle" id="unitToggle">
+                <button class="unit-btn active" data-unit="metric">Metric (cm / kg)</button>
+                <button class="unit-btn" data-unit="imperial">Imperial (ft / lbs)</button>
+            </div>
+        </header>
+
+        <main class="main-layout">
+            <!-- Left Side: Inputs -->
+            <section class="card input-section">
+                <!-- Metric Inputs -->
+                <div class="field-group metric-field">
+                    <div class="field-header">
+                        <label for="heightCmInput">Height</label>
+                        <div class="input-inline">
+                            <input type="number" id="heightCmInput" min="90" max="230" value="175">
+                            <span class="unit-label">cm</span>
+                        </div>
+                    </div>
+                    <input type="range" id="heightCmSlider" min="90" max="230" value="175" class="slider">
+                </div>
+
+                <!-- Imperial Inputs (Hidden by default) -->
+                <div class="field-group imperial-field hidden">
+                    <div class="field-header">
+                        <label>Height</label>
+                        <div class="imperial-inputs">
+                            <div class="input-inline">
+                                <input type="number" id="heightFtInput" min="2" max="8" value="5">
+                                <span class="unit-label">ft</span>
+                            </div>
+                            <div class="input-inline">
+                                <input type="number" id="heightInInput" min="0" max="11" value="9">
+                                <span class="unit-label">in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metric Weight -->
+                <div class="field-group metric-field">
+                    <div class="field-header">
+                        <label for="weightKgInput">Weight</label>
+                        <div class="input-inline">
+                            <input type="number" id="weightKgInput" min="20" max="250" value="70" step="0.5">
+                            <span class="unit-label">kg</span>
+                        </div>
+                    </div>
+                    <input type="range" id="weightKgSlider" min="20" max="250" value="70" step="0.5" class="slider">
+                </div>
+
+                <!-- Imperial Weight (Hidden by default) -->
+                <div class="field-group imperial-field hidden">
+                    <div class="field-header">
+                        <label for="weightLbsInput">Weight</label>
+                        <div class="input-inline">
+                            <input type="number" id="weightLbsInput" min="45" max="550" value="154" step="1">
+                            <span class="unit-label">lbs</span>
+                        </div>
+                    </div>
+                    <input type="range" id="weightLbsSlider" min="45" max="550" value="154" step="1" class="slider">
+                </div>
+
+                <!-- Optional Details Collapsible or Simple Gender/Age -->
+                <div class="details-row">
+                    <div class="sub-field">
+                        <label for="ageInput">Age</label>
+                        <input type="number" id="ageInput" min="2" max="120" value="28">
+                    </div>
+                    <div class="sub-field">
+                        <label for="genderSelect">Gender</label>
+                        <select id="genderSelect">
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Side: Results -->
+            <section class="card result-section">
+                <div class="result-header">
+                    <span class="sub-title">Your Result</span>
+                    <span id="categoryBadge" class="status-badge status-normal">Normal Weight</span>
+                </div>
+
+                <div class="bmi-display">
+                    <span class="bmi-num" id="bmiValue">22.9</span>
+                    <span class="bmi-unit">BMI</span>
+                </div>
+
+                <!-- Simple Minimal Progress Scale Bar -->
+                <div class="scale-bar-wrapper">
+                    <div class="scale-bar">
+                        <div class="scale-segment seg-underweight" title="Underweight (< 18.5)"></div>
+                        <div class="scale-segment seg-normal" title="Normal (18.5 - 24.9)"></div>
+                        <div class="scale-segment seg-overweight" title="Overweight (25 - 29.9)"></div>
+                        <div class="scale-segment seg-obese" title="Obese (≥ 30)"></div>
+                    </div>
+                    <div class="scale-pointer" id="scalePointer" style="left: 43%;"></div>
+                    <div class="scale-labels">
+                        <span>18.5</span>
+                        <span>25.0</span>
+                        <span>30.0</span>
+                    </div>
+                </div>
+
+                <div class="summary-info">
+                    <div class="info-row">
+                        <span class="info-label">Healthy Weight Range</span>
+                        <span class="info-value" id="idealWeight">56.7 – 76.3 kg</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Status Summary</span>
+                        <span class="info-value" id="statusSummary">Your weight is within the healthy range for your height.</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Body Mass Index is a general screening indicator. Consult a medical professional for clinical evaluations.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+/* ==========================================================================
+   Minimalist White BMI Calculator — Clean & Muted Design System
+   ========================================================================== */
+
+:root {
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --border-focus: #94a3b8;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    /* Subtle Muted Status Colors */
+    --status-underweight: #3b82f6;
+    --status-normal: #10b981;
+    --status-overweight: #f59e0b;
+    --status-obese: #ef4444;
+
+    --radius-card: 16px;
+    --radius-elem: 8px;
+    
+    --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+}
+
+.unit-toggle {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.unit-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.unit-btn.active {
+    background: #ffffff;
+    color: var(--text-primary);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Main Grid Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 720px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Input Form Controls */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-header label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.input-inline {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-elem);
+    padding: 4px 10px;
+    transition: var(--transition);
+}
+
+.input-inline:focus-within {
+    border-color: var(--border-focus);
+    background: #ffffff;
+}
+
+.input-inline input {
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    width: 65px;
+    text-align: right;
+    outline: none;
+}
+
+.unit-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
+.imperial-inputs {
+    display: flex;
+    gap: 8px;
+}
+
+/* Minimal Slider */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: #e2e8f0;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--text-primary);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    transition: transform 0.15s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Sub Fields (Age & Gender) */
+.details-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.sub-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sub-field label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.sub-field input, .sub-field select {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-elem);
+    padding: 8px 10px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    outline: none;
+}
+
+/* Result Section */
+.result-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.status-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.status-badge.status-normal {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.status-badge.status-underweight {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.status-badge.status-overweight {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.status-badge.status-obese {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* Big Minimal Score */
+.bmi-display {
+    margin: 20px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.bmi-num {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    color: var(--text-primary);
+}
+
+.bmi-unit {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Minimal Scale Bar */
+.scale-bar-wrapper {
+    position: relative;
+    margin: 16px 0 24px 0;
+}
+
+.scale-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 3px;
+}
+
+.scale-segment {
+    flex: 1;
+    border-radius: 2px;
+    opacity: 0.85;
+}
+
+.seg-underweight { background: #93c5fd; }
+.seg-normal { background: #6ee7b7; }
+.seg-overweight { background: #fcd34d; }
+.seg-obese { background: #fca5a5; }
+
+.scale-pointer {
+    position: absolute;
+    top: -5px;
+    width: 2px;
+    height: 18px;
+    background: var(--text-primary);
+    transform: translateX(-50%);
+    transition: left 0.3s ease;
+    border-radius: 1px;
+}
+
+.scale-pointer::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--text-primary);
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    padding: 0 25%;
+}
+
+/* Summary Info List */
+.summary-info {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.info-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.hidden {
+    display: none !important;
+}
